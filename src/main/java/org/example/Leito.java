@@ -14,7 +14,7 @@ public class Leito {
     public enum Status {
         /** Leito disponível para alocação. */
         LIVRE,
-x        /** Leito ocupado por um paciente. */
+        /** Leito ocupado por um paciente. */
         OCUPADO,
         /** Leito em manutenção — indisponível temporariamente. */
         MANUTENCAO

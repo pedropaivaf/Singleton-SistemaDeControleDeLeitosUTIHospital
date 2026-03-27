@@ -171,4 +171,34 @@ class GerenciadorLeitosTest {
         assertThrows(LeitoException.class, () -> gerenciador.liberarLeito(1),
                 "Liberar leito já livre deve lançar LeitoException");
     }
+
+    /**
+     * Testa que um leito em MANUTENCAO não pode ser alocado e valida o getId().
+     */
+    @Test
+    void testLeitoEmManutencao() {
+        GerenciadorLeitos gerenciador = GerenciadorLeitos.getInstance();
+        Leito leito = gerenciador.getLeito(5);
+
+        assertEquals(5, leito.getId(), "getId() deve retornar o id correto do leito");
+
+        leito.setStatus(Leito.Status.MANUTENCAO);
+
+        Paciente paciente = new Paciente("Pedro", "555.555.555-55", Paciente.Prioridade.CRITICA);
+        assertThrows(LeitoException.class, () -> gerenciador.alocarLeito(5, paciente),
+                "Leito em MANUTENCAO não pode ser alocado");
+    }
+
+    /**
+     * Testa que após reset(), uma nova instância é criada — confirmando
+     * que o Singleton pode ser reinicializado (uso exclusivo em testes).
+     */
+    @Test
+    void testResetSingleton() {
+        GerenciadorLeitos g1 = GerenciadorLeitos.getInstance();
+        GerenciadorLeitos.reset();
+        GerenciadorLeitos g2 = GerenciadorLeitos.getInstance();
+
+        assertNotSame(g1, g2, "Após reset(), getInstance() deve retornar nova instância");
+    }
 }
