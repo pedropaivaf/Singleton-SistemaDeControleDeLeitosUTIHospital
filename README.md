@@ -1,5 +1,9 @@
 # Sistema de Controle de Leitos UTI - Padrão Singleton
 
+![Testes](https://img.shields.io/badge/Testes-10%2F10%20passando-brightgreen)
+![Java](https://img.shields.io/badge/Java-21-orange)
+![JUnit](https://img.shields.io/badge/JUnit-5-blue)
+
 Projeto desenvolvido em Java 21 com Maven para a disciplina de Engenharia de Software. O objetivo é demonstrar o padrão de projeto **Singleton** aplicado a um cenário real: o gerenciamento centralizado de leitos de UTI em um hospital.
 
 ## Por que Singleton?
@@ -26,20 +30,20 @@ src/test/java/org/example/
 └── GerenciadorLeitosTest.java → 10 casos de teste JUnit 5
 ```
 
-## Casos de teste
+## Resultado dos Testes
 
-| Teste | O que valida |
-|-------|-------------|
-| `testInstanciaUnica` | `getInstance()` retorna sempre a mesma referência |
-| `testConcorrenciaThreads` | 100 threads simultâneas recebem a mesma instância |
-| `testResetSingleton` | Após `reset()`, uma nova instância é criada |
-| `testAlocarLeitoLivre` | Paciente alocado com sucesso, status muda para OCUPADO |
-| `testAlocarLeitoOcupado` | Tentar alocar leito ocupado lança `LeitoException` |
-| `testLiberarLeito` | Leito liberado volta para LIVRE |
-| `testLiberarLeitoJaLivre` | Liberar leito já livre lança `LeitoException` |
-| `testLeitoEmManutencao` | Leito em MANUTENCAO não pode ser alocado |
-| `testFilaPrioridade` | Paciente CRITICA sai antes de MEDIA na fila |
-| `testLeitosDisponiveis` | Contagem atualiza corretamente após alocações |
+| # | Teste | O que valida | Resultado |
+|---|-------|-------------|-----------|
+| 1 | testInstanciaUnica | `getInstance()` retorna sempre a mesma referência | :white_check_mark: Passou |
+| 2 | testConcorrenciaThreads | 100 threads simultâneas recebem a mesma instância | :white_check_mark: Passou |
+| 3 | testResetSingleton | Após `reset()`, uma nova instância é criada | :white_check_mark: Passou |
+| 4 | testAlocarLeitoLivre | Paciente alocado com sucesso, status muda para OCUPADO | :white_check_mark: Passou |
+| 5 | testAlocarLeitoOcupado | Tentar alocar leito ocupado lança `LeitoException` | :white_check_mark: Passou |
+| 6 | testLiberarLeito | Leito liberado volta para LIVRE | :white_check_mark: Passou |
+| 7 | testLiberarLeitoJaLivre | Liberar leito já livre lança `LeitoException` | :white_check_mark: Passou |
+| 8 | testLeitoEmManutencao | Leito em MANUTENCAO não pode ser alocado | :white_check_mark: Passou |
+| 9 | testFilaPrioridade | Paciente CRITICA sai antes de MEDIA na fila | :white_check_mark: Passou |
+| 10 | testLeitosDisponiveis | Contagem atualiza corretamente após alocações | :white_check_mark: Passou |
 
 ## Como rodar
 
